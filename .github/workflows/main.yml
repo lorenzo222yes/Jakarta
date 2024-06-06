@@ -12,13 +12,19 @@ jobs:
     steps:
       - name: Checkout Repository  # Étape pour récupérer le code source du référentiel
         uses: actions/checkout@v2
-      
+
       - name: Set up JDK  # Étape pour configurer la version de Java
         uses: actions/setup-java@v2
         with:
           java-version: '11'  # Remplacez par la version de Java que vous utilisez
-      
+
       - name: Build with Maven  # Étape pour construire le projet avec Maven
         run: mvn clean install  # Commande pour construire le projet avec Maven
-      
-      # Éventuellement, ajoutez d'autres étapes comme le déploiement sur Azure ou d'autres actions spécifiques à votre projet
+
+      - name: Deploy to Azure Web App  # Étape pour déployer l'application sur Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'VideoGamesDB'  # Remplacez par le nom de votre application Azure
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: 'target/VideoGamesDB-1.0-SNAPSHOT.war'
