@@ -1,82 +1,83 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>VideoGamesDB</groupId>
-  <artifactId>VideoGamesDB</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>VideoGamesDB</groupId>
+    <artifactId>VideoGamesDB</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
     
     <dependencies>
-      <dependency>
-        <groupId>jakarta.platform</groupId>
-        <artifactId>jakarta.jakartaee-web-api</artifactId>
-        <version>9.0.0</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core-jakarta</artifactId>
-        <version>5.6.15.Final</version>
-      </dependency>
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.11</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.hsqldb</groupId>
-        <artifactId>hsqldb</artifactId>
-        <version>2.7.2</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>30.1-jre</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.google.guava</groupId>
-          <artifactId>listenablefuture</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>9.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core-jakarta</artifactId>
+            <version>5.6.15.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.7.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1-jre</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>listenablefuture</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
-    
-   
-  <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-  </properties>
-  
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.4.0</version>
-      </plugin>
-      <plugin>
-        <groupId>org.wildfly.plugins</groupId>
-        <artifactId>wildfly-maven-plugin</artifactId>
-        <version>3.0.2.Final</version>
-      </plugin>
-      <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>2.13.0</version>
-        <configuration>
-          <subscriptionId>a50e3ad8-10f5-4a2e-adfa-55b1b26817c0</subscriptionId>
-          <resourceGroup>JakartaRessourceGroup</resourceGroup>
-          <appName>VideoGamesDB</appName>
-          <pricingTier>B1</pricingTier>
-          <region>westeurope</region>
-          <runtime>
-            <os>Linux</os>
-            <javaVersion>Java 8</javaVersion> <!-- Change to Java 8 -->
-            <webContainer>Tomcat 8.5</webContainer> <!-- Change to Tomcat 8.5 -->
-          </runtime>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>3.0.2.Final</version>
+            </plugin>
+            <plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-webapp-maven-plugin</artifactId>
+                <version>2.13.0</version>
+                <configuration>
+                    <subscriptionId>a50e3ad8-10f5-4a2e-adfa-55b1b26817c0</subscriptionId>
+                    <resourceGroup>JakartaRessourceGroup</resourceGroup>
+                    <appName>VideoGamesDB</appName>
+                    <pricingTier>B1</pricingTier>
+                    <region>westeurope</region>
+                    <runtime>
+                        <os>Linux</os>
+                        <javaVersion>Java 11</javaVersion> <!-- Mise à jour à Java 11 -->
+                        <webContainer>Tomcat 9.0</webContainer> <!-- Mise à jour à Tomcat 9.0 -->
+                    </runtime>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
