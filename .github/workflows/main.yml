@@ -1,0 +1,24 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Déclenche le workflow lorsqu'un push est effectué sur la branche principale (à adapter selon votre configuration)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Spécifie l'image de l'agent à utiliser pour exécuter le travail
+
+    steps:
+      - name: Checkout Repository  # Étape pour récupérer le code source du référentiel
+        uses: actions/checkout@v2
+      
+      - name: Set up JDK  # Étape pour configurer la version de Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Remplacez par la version de Java que vous utilisez
+      
+      - name: Build with Maven  # Étape pour construire le projet avec Maven
+        run: mvn clean install  # Commande pour construire le projet avec Maven
+      
+      # Éventuellement, ajoutez d'autres étapes comme le déploiement sur Azure ou d'autres actions spécifiques à votre projet
