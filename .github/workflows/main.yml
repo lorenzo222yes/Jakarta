@@ -16,15 +16,14 @@ jobs:
       - name: Set up JDK  # Étape pour configurer la version de Java
         uses: actions/setup-java@v2
         with:
-          java-version: '11'  # Remplacez par la version de Java que vous utilisez
+          java-version: '11'  # Utilisation de Java 11
 
       - name: Build with Maven  # Étape pour construire le projet avec Maven
         run: mvn clean install  # Commande pour construire le projet avec Maven
 
-      - name: Deploy to Azure Web App  # Étape pour déployer l'application sur Azure
+      - name: Deploy to Azure Web App  # Étape pour déployer sur Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'VideoGamesDB'  # Remplacez par le nom de votre application Azure
-          slot-name: 'production'
+          app-name: 'VideoGamesDB'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: 'target/VideoGamesDB-1.0-SNAPSHOT.war'
+          package: '*.war'
